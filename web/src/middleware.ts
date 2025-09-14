@@ -1,3 +1,4 @@
+// gate: require session cookie
 import { NextResponse, NextRequest } from "next/server";
 import { getTokenCookieName } from "@/lib/auth";
 

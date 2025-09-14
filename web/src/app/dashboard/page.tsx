@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { Card, CardHeader, CardContent } from "@/components/ui/Card";
 import Badge from "@/components/ui/Badge";
 
+// auth: extract user id from cookie
 async function getUserIdFromCookie(): Promise<string | null> {
   const cookieStore = await cookies();
   const token = cookieStore.get(getTokenCookieName())?.value;
@@ -16,6 +17,7 @@ async function getUserIdFromCookie(): Promise<string | null> {
   return payload?.userId ?? null;
 }
 
+// page: dashboard
 export default async function DashboardPage({ searchParams }: { searchParams?: Record<string, string | string[] | undefined> }) {
   const userId = await getUserIdFromCookie();
   if (!userId) {
@@ -91,6 +93,7 @@ export default async function DashboardPage({ searchParams }: { searchParams?: R
     </div>
   );
 }
+// action: toggle achievement
 async function toggleAchievement(formData: FormData) {
   "use server";
   const id = String(formData.get("id") || "");
@@ -108,6 +111,7 @@ async function toggleAchievement(formData: FormData) {
   revalidatePath("/dashboard");
 }
 
+// action: delete achievement
 async function deleteAchievement(formData: FormData) {
   "use server";
   const achievementId = String(formData.get("achievementId") || "");
@@ -125,6 +129,7 @@ async function deleteAchievement(formData: FormData) {
   revalidatePath("/dashboard");
 }
 
+// action: delete game
 async function deleteGame(formData: FormData) {
   "use server";
   const gameId = String(formData.get("gameId") || "");
@@ -143,12 +148,15 @@ async function deleteGame(formData: FormData) {
   revalidatePath("/dashboard");
 }
 
+// util: headers (reserved)
 function getFormHeaders() {
   return { "Content-Type": "application/json" } as const;
 }
 
+// util: no-op (placeholder)
 function revalidatePathClient() {}
 
+// form: add game
 function AddGameForm() {
   async function action(formData: FormData) {
     "use server";
@@ -182,6 +190,7 @@ function AddGameForm() {
   );
 }
 
+// form: add achievement
 function AddAchievementForm({ gameId }: { gameId: string }) {
   async function action(formData: FormData) {
     "use server";

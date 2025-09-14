@@ -1,3 +1,4 @@
+// page: profile settings (email, password)
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { getTokenCookieName, verifyJwt, hashPassword } from "@/lib/auth";

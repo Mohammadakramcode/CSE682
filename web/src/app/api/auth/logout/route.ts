@@ -1,3 +1,4 @@
+// logout: clear cookie
 import { NextResponse } from "next/server";
 import { getTokenCookieName } from "@/lib/auth";
 

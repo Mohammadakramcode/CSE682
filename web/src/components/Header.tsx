@@ -1,3 +1,4 @@
+// top nav: links + logout
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
