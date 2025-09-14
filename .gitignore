@@ -1,0 +1,11 @@
+.cursor/
+.vscode/
+.idea/
+.DS_Store
+web/node_modules/
+web/.next/
+web/.turbo/
+web/.vercel/
+web/.env
+web/prisma/dev.db
+web/src/generated/prisma/
